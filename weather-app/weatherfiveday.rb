@@ -17,6 +17,9 @@ weather.forecasts.each do |forecast|
 day = forecast['date']
  
 weekday = day.strftime('%w').to_i
+
+lowtemp = forecast['low'] * 1.8 + 32
+hightemp = forecast['high'] * 1.8 + 32
  
 if weekday == today
    dayName = 'Today'
@@ -26,6 +29,10 @@ else
    dayName = day.strftime('%A')
 end
  
-puts dayName + ' is going to be ' + forecast['text'].downcase + ' with a low of ' + forecast['low'].to_s + ' and a high of ' + forecast['high'].to_s
+puts dayName + ' is going to be ' + 
+forecast['text'].downcase + 
+" with a high of #{hightemp.to_i}" + 
+" and a low of #{lowtemp.to_i} "
+
  
 end
